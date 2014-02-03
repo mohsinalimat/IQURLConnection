@@ -52,7 +52,8 @@
         [progressOverlayView displayOperationDidFinishAnimation];
         progressOverlayView.progress = 0;
         labelProgress.text = [NSString stringWithFormat:@"Progress:100%%"];
-       [progressOverlayView removeFromSuperview];
+        
+        [progressOverlayView performSelector:@selector(removeFromSuperview) withObject:nil afterDelay:progressOverlayView.stateChangeAnimationDuration];
     }];
 }
 

@@ -34,17 +34,19 @@
 
 - (IBAction)downloadButtonClicked:(UIButton *)sender
 {
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://s3.amazonaws.com/cocoacontrols_production/uploads/control_image/image/2932/iOS_Simulator_Screen_shot_03-Feb-2014_2.51.15_PM.png"] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:300];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://raw.githubusercontent.com/IQPhotoEditor/IQPhotoEditor/master/IQPhotoEditor%20Demo/Screenshot/IQPhotoEditorScreenshot1.png"] cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:300];
     
     imageViewProgress.image = nil;
     labelProgress.text = [NSString stringWithFormat:@"Progress:0%%"];
     [imageViewProgress addSubview:progressOverlayView];
     [progressOverlayView displayOperationWillTriggerAnimation];
-    [IQURLConnection sendAsynchronousRequest:request responseBlock:^(NSURLResponse *response) {
-    } progressBlock:^(CGFloat progress) {
+    
+    [IQURLConnection sendAsynchronousRequest:request responseBlock:^(NSHTTPURLResponse *response) {
+    } uploadProgressBlock:^(CGFloat progress) {
+    } downloadProgressBlock:^(CGFloat progress) {
         progressOverlayView.progress = progress;
         labelProgress.text = [NSString stringWithFormat:@"Progress:%d%%",(int)(progress*100)];
-    } completionHandler:^(id result, NSError *error) {
+    } completionHandler:^(NSData *result, NSError *error) {
         
         UIImage *image = [UIImage imageWithData:result];
         imageViewProgress.image = image;

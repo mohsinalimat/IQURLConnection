@@ -13,17 +13,28 @@
 		9D8A6151189F9B4400BFC18A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9D8A614F189F9B4400BFC18A /* InfoPlist.strings */; };
 		9D8A6153189F9B4400BFC18A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D8A6152189F9B4400BFC18A /* main.m */; };
 		9D8A6157189F9B4400BFC18A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D8A6156189F9B4400BFC18A /* AppDelegate.m */; };
-		9D8A615D189F9B4400BFC18A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D8A615C189F9B4400BFC18A /* ViewController.m */; };
 		9D8A615F189F9B4400BFC18A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D8A615E189F9B4400BFC18A /* Images.xcassets */; };
 		9D8A6166189F9B4400BFC18A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8A6165189F9B4400BFC18A /* XCTest.framework */; };
 		9D8A6167189F9B4400BFC18A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8A6146189F9B4400BFC18A /* Foundation.framework */; };
 		9D8A6168189F9B4400BFC18A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8A614A189F9B4400BFC18A /* UIKit.framework */; };
 		9D8A6170189F9B4400BFC18A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9D8A616E189F9B4400BFC18A /* InfoPlist.strings */; };
 		9D8A6172189F9B4400BFC18A /* IQURLConnectionDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D8A6171189F9B4400BFC18A /* IQURLConnectionDemoTests.m */; };
-		9D8A6181189F9B5600BFC18A /* DAProgressOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D8A617D189F9B5600BFC18A /* DAProgressOverlayView.m */; };
-		9D8A6182189F9B5600BFC18A /* IQURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D8A6180189F9B5600BFC18A /* IQURLConnection.m */; };
 		9D8A6184189F9B7200BFC18A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D8A6183189F9B7200BFC18A /* Main.storyboard */; };
 		9D8A6186189FA02400BFC18A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8A6185189FA02400BFC18A /* QuartzCore.framework */; };
+		9D9DCEA119CAAA2C00A9D3A7 /* IQAsyncButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9DCE8C19CAAA2C00A9D3A7 /* IQAsyncButton.m */; };
+		9D9DCEA219CAAA2C00A9D3A7 /* IQAsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9DCE8E19CAAA2C00A9D3A7 /* IQAsyncImageView.m */; };
+		9D9DCEA319CAAA2C00A9D3A7 /* IQDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9DCE9119CAAA2C00A9D3A7 /* IQDataCache.m */; };
+		9D9DCEA419CAAA2C00A9D3A7 /* IQDownloadTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9DCE9419CAAA2C00A9D3A7 /* IQDownloadTask.m */; };
+		9D9DCEA519CAAA2C00A9D3A7 /* IQFileDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9DCE9619CAAA2C00A9D3A7 /* IQFileDownloadManager.m */; };
+		9D9DCEA619CAAA2C00A9D3A7 /* IQURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9DCE9919CAAA2C00A9D3A7 /* IQURLConnection.m */; };
+		9D9DCEA719CAAA2C00A9D3A7 /* paused.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D9DCE9A19CAAA2C00A9D3A7 /* paused.png */; };
+		9D9DCEA819CAAA2C00A9D3A7 /* paused@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D9DCE9B19CAAA2C00A9D3A7 /* paused@2x.png */; };
+		9D9DCEA919CAAA2C00A9D3A7 /* stop.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D9DCE9C19CAAA2C00A9D3A7 /* stop.png */; };
+		9D9DCEAA19CAAA2C00A9D3A7 /* stop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D9DCE9D19CAAA2C00A9D3A7 /* stop@2x.png */; };
+		9D9DCEAB19CAAA2C00A9D3A7 /* UAProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9DCEA019CAAA2C00A9D3A7 /* UAProgressView.m */; };
+		9D9DCEB219CAAA6300A9D3A7 /* DemoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9DCEAD19CAAA6300A9D3A7 /* DemoTableViewController.m */; };
+		9D9DCEB319CAAA6300A9D3A7 /* DemoCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9DCEAF19CAAA6300A9D3A7 /* DemoCollectionViewController.m */; };
+		9D9DCEB419CAAA6300A9D3A7 /* AsyncImageViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D9DCEB119CAAA6300A9D3A7 /* AsyncImageViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,20 +58,38 @@
 		9D8A6154189F9B4400BFC18A /* IQURLConnectionDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IQURLConnectionDemo-Prefix.pch"; sourceTree = "<group>"; };
 		9D8A6155189F9B4400BFC18A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9D8A6156189F9B4400BFC18A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		9D8A615B189F9B4400BFC18A /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		9D8A615C189F9B4400BFC18A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		9D8A615E189F9B4400BFC18A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9D8A6164189F9B4400BFC18A /* IQURLConnectionDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IQURLConnectionDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D8A6165189F9B4400BFC18A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		9D8A616D189F9B4400BFC18A /* IQURLConnectionDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "IQURLConnectionDemoTests-Info.plist"; sourceTree = "<group>"; };
 		9D8A616F189F9B4400BFC18A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9D8A6171189F9B4400BFC18A /* IQURLConnectionDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IQURLConnectionDemoTests.m; sourceTree = "<group>"; };
-		9D8A617C189F9B5600BFC18A /* DAProgressOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAProgressOverlayView.h; sourceTree = "<group>"; };
-		9D8A617D189F9B5600BFC18A /* DAProgressOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAProgressOverlayView.m; sourceTree = "<group>"; };
-		9D8A617F189F9B5600BFC18A /* IQURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQURLConnection.h; sourceTree = "<group>"; };
-		9D8A6180189F9B5600BFC18A /* IQURLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQURLConnection.m; sourceTree = "<group>"; };
 		9D8A6183189F9B7200BFC18A /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		9D8A6185189FA02400BFC18A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		9D9DCE8B19CAAA2C00A9D3A7 /* IQAsyncButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQAsyncButton.h; sourceTree = "<group>"; };
+		9D9DCE8C19CAAA2C00A9D3A7 /* IQAsyncButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQAsyncButton.m; sourceTree = "<group>"; };
+		9D9DCE8D19CAAA2C00A9D3A7 /* IQAsyncImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQAsyncImageView.h; sourceTree = "<group>"; };
+		9D9DCE8E19CAAA2C00A9D3A7 /* IQAsyncImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQAsyncImageView.m; sourceTree = "<group>"; };
+		9D9DCE9019CAAA2C00A9D3A7 /* IQDataCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQDataCache.h; sourceTree = "<group>"; };
+		9D9DCE9119CAAA2C00A9D3A7 /* IQDataCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQDataCache.m; sourceTree = "<group>"; };
+		9D9DCE9319CAAA2C00A9D3A7 /* IQDownloadTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQDownloadTask.h; sourceTree = "<group>"; };
+		9D9DCE9419CAAA2C00A9D3A7 /* IQDownloadTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQDownloadTask.m; sourceTree = "<group>"; };
+		9D9DCE9519CAAA2C00A9D3A7 /* IQFileDownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQFileDownloadManager.h; sourceTree = "<group>"; };
+		9D9DCE9619CAAA2C00A9D3A7 /* IQFileDownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQFileDownloadManager.m; sourceTree = "<group>"; };
+		9D9DCE9819CAAA2C00A9D3A7 /* IQURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQURLConnection.h; sourceTree = "<group>"; };
+		9D9DCE9919CAAA2C00A9D3A7 /* IQURLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQURLConnection.m; sourceTree = "<group>"; };
+		9D9DCE9A19CAAA2C00A9D3A7 /* paused.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = paused.png; sourceTree = "<group>"; };
+		9D9DCE9B19CAAA2C00A9D3A7 /* paused@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "paused@2x.png"; sourceTree = "<group>"; };
+		9D9DCE9C19CAAA2C00A9D3A7 /* stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stop.png; sourceTree = "<group>"; };
+		9D9DCE9D19CAAA2C00A9D3A7 /* stop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stop@2x.png"; sourceTree = "<group>"; };
+		9D9DCE9F19CAAA2C00A9D3A7 /* UAProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UAProgressView.h; sourceTree = "<group>"; };
+		9D9DCEA019CAAA2C00A9D3A7 /* UAProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UAProgressView.m; sourceTree = "<group>"; };
+		9D9DCEAC19CAAA6300A9D3A7 /* DemoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoTableViewController.h; sourceTree = "<group>"; };
+		9D9DCEAD19CAAA6300A9D3A7 /* DemoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoTableViewController.m; sourceTree = "<group>"; };
+		9D9DCEAE19CAAA6300A9D3A7 /* DemoCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoCollectionViewController.h; sourceTree = "<group>"; };
+		9D9DCEAF19CAAA6300A9D3A7 /* DemoCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoCollectionViewController.m; sourceTree = "<group>"; };
+		9D9DCEB019CAAA6300A9D3A7 /* AsyncImageViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncImageViewCell.h; sourceTree = "<group>"; };
+		9D9DCEB119CAAA6300A9D3A7 /* AsyncImageViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncImageViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,8 +120,7 @@
 		9D8A613A189F9B4400BFC18A = {
 			isa = PBXGroup;
 			children = (
-				9D8A617B189F9B5600BFC18A /* DAProgressOverlayView */,
-				9D8A617E189F9B5600BFC18A /* IQURLConnection */,
+				9D9DCE8A19CAAA2C00A9D3A7 /* IQAsyncImageView */,
 				9D8A614C189F9B4400BFC18A /* IQURLConnectionDemo */,
 				9D8A616B189F9B4400BFC18A /* IQURLConnectionDemoTests */,
 				9D8A6145189F9B4400BFC18A /* Frameworks */,
@@ -127,8 +155,12 @@
 				9D8A6155189F9B4400BFC18A /* AppDelegate.h */,
 				9D8A6156189F9B4400BFC18A /* AppDelegate.m */,
 				9D8A6183189F9B7200BFC18A /* Main.storyboard */,
-				9D8A615B189F9B4400BFC18A /* ViewController.h */,
-				9D8A615C189F9B4400BFC18A /* ViewController.m */,
+				9D9DCEAC19CAAA6300A9D3A7 /* DemoTableViewController.h */,
+				9D9DCEAD19CAAA6300A9D3A7 /* DemoTableViewController.m */,
+				9D9DCEAE19CAAA6300A9D3A7 /* DemoCollectionViewController.h */,
+				9D9DCEAF19CAAA6300A9D3A7 /* DemoCollectionViewController.m */,
+				9D9DCEB019CAAA6300A9D3A7 /* AsyncImageViewCell.h */,
+				9D9DCEB119CAAA6300A9D3A7 /* AsyncImageViewCell.m */,
 				9D8A615E189F9B4400BFC18A /* Images.xcassets */,
 				9D8A614D189F9B4400BFC18A /* Supporting Files */,
 			);
@@ -164,22 +196,61 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		9D8A617B189F9B5600BFC18A /* DAProgressOverlayView */ = {
+		9D9DCE8A19CAAA2C00A9D3A7 /* IQAsyncImageView */ = {
 			isa = PBXGroup;
 			children = (
-				9D8A617C189F9B5600BFC18A /* DAProgressOverlayView.h */,
-				9D8A617D189F9B5600BFC18A /* DAProgressOverlayView.m */,
+				9D9DCE8B19CAAA2C00A9D3A7 /* IQAsyncButton.h */,
+				9D9DCE8C19CAAA2C00A9D3A7 /* IQAsyncButton.m */,
+				9D9DCE8D19CAAA2C00A9D3A7 /* IQAsyncImageView.h */,
+				9D9DCE8E19CAAA2C00A9D3A7 /* IQAsyncImageView.m */,
+				9D9DCE8F19CAAA2C00A9D3A7 /* IQDataCache */,
+				9D9DCE9219CAAA2C00A9D3A7 /* IQFileDownloadManager */,
+				9D9DCE9719CAAA2C00A9D3A7 /* IQURLConnection */,
+				9D9DCE9A19CAAA2C00A9D3A7 /* paused.png */,
+				9D9DCE9B19CAAA2C00A9D3A7 /* paused@2x.png */,
+				9D9DCE9C19CAAA2C00A9D3A7 /* stop.png */,
+				9D9DCE9D19CAAA2C00A9D3A7 /* stop@2x.png */,
+				9D9DCE9E19CAAA2C00A9D3A7 /* UAProgressView */,
 			);
-			path = DAProgressOverlayView;
+			path = IQAsyncImageView;
 			sourceTree = "<group>";
 		};
-		9D8A617E189F9B5600BFC18A /* IQURLConnection */ = {
+		9D9DCE8F19CAAA2C00A9D3A7 /* IQDataCache */ = {
 			isa = PBXGroup;
 			children = (
-				9D8A617F189F9B5600BFC18A /* IQURLConnection.h */,
-				9D8A6180189F9B5600BFC18A /* IQURLConnection.m */,
+				9D9DCE9019CAAA2C00A9D3A7 /* IQDataCache.h */,
+				9D9DCE9119CAAA2C00A9D3A7 /* IQDataCache.m */,
+			);
+			path = IQDataCache;
+			sourceTree = "<group>";
+		};
+		9D9DCE9219CAAA2C00A9D3A7 /* IQFileDownloadManager */ = {
+			isa = PBXGroup;
+			children = (
+				9D9DCE9319CAAA2C00A9D3A7 /* IQDownloadTask.h */,
+				9D9DCE9419CAAA2C00A9D3A7 /* IQDownloadTask.m */,
+				9D9DCE9519CAAA2C00A9D3A7 /* IQFileDownloadManager.h */,
+				9D9DCE9619CAAA2C00A9D3A7 /* IQFileDownloadManager.m */,
+			);
+			path = IQFileDownloadManager;
+			sourceTree = "<group>";
+		};
+		9D9DCE9719CAAA2C00A9D3A7 /* IQURLConnection */ = {
+			isa = PBXGroup;
+			children = (
+				9D9DCE9819CAAA2C00A9D3A7 /* IQURLConnection.h */,
+				9D9DCE9919CAAA2C00A9D3A7 /* IQURLConnection.m */,
 			);
 			path = IQURLConnection;
+			sourceTree = "<group>";
+		};
+		9D9DCE9E19CAAA2C00A9D3A7 /* UAProgressView */ = {
+			isa = PBXGroup;
+			children = (
+				9D9DCE9F19CAAA2C00A9D3A7 /* UAProgressView.h */,
+				9D9DCEA019CAAA2C00A9D3A7 /* UAProgressView.m */,
+			);
+			path = UAProgressView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,6 +332,10 @@
 				9D8A6184189F9B7200BFC18A /* Main.storyboard in Resources */,
 				9D8A615F189F9B4400BFC18A /* Images.xcassets in Resources */,
 				9D8A6151189F9B4400BFC18A /* InfoPlist.strings in Resources */,
+				9D9DCEA719CAAA2C00A9D3A7 /* paused.png in Resources */,
+				9D9DCEA819CAAA2C00A9D3A7 /* paused@2x.png in Resources */,
+				9D9DCEA919CAAA2C00A9D3A7 /* stop.png in Resources */,
+				9D9DCEAA19CAAA2C00A9D3A7 /* stop@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,11 +354,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9D8A615D189F9B4400BFC18A /* ViewController.m in Sources */,
-				9D8A6182189F9B5600BFC18A /* IQURLConnection.m in Sources */,
-				9D8A6181189F9B5600BFC18A /* DAProgressOverlayView.m in Sources */,
 				9D8A6157189F9B4400BFC18A /* AppDelegate.m in Sources */,
+				9D9DCEA419CAAA2C00A9D3A7 /* IQDownloadTask.m in Sources */,
+				9D9DCEA619CAAA2C00A9D3A7 /* IQURLConnection.m in Sources */,
+				9D9DCEB219CAAA6300A9D3A7 /* DemoTableViewController.m in Sources */,
+				9D9DCEB319CAAA6300A9D3A7 /* DemoCollectionViewController.m in Sources */,
+				9D9DCEB419CAAA6300A9D3A7 /* AsyncImageViewCell.m in Sources */,
+				9D9DCEA119CAAA2C00A9D3A7 /* IQAsyncButton.m in Sources */,
+				9D9DCEA219CAAA2C00A9D3A7 /* IQAsyncImageView.m in Sources */,
+				9D9DCEA319CAAA2C00A9D3A7 /* IQDataCache.m in Sources */,
+				9D9DCEAB19CAAA2C00A9D3A7 /* UAProgressView.m in Sources */,
 				9D8A6153189F9B4400BFC18A /* main.m in Sources */,
+				9D9DCEA519CAAA2C00A9D3A7 /* IQFileDownloadManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,6 +566,7 @@
 				9D8A6177189F9B4400BFC18A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9D8A6178189F9B4400BFC18A /* Build configuration list for PBXNativeTarget "IQURLConnectionDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -492,6 +575,7 @@
 				9D8A617A189F9B4400BFC18A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

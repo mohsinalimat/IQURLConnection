@@ -160,17 +160,17 @@ static NSOperationQueue *queue;
 	NSDictionary *headers = [response allHeaderFields];
 	if (headers)
     {
-		if ([headers objectForKey:@"Content-Range"])
+		if (headers[@"Content-Range"])
         {
-			NSString *contentRange = [headers objectForKey: @"Content-Range"];
+			NSString *contentRange = headers[@"Content-Range"];
 			NSRange range = [contentRange rangeOfString: @"/"];
 			NSString *totalBytesCount = [contentRange substringFromIndex: range.location + 1];
 			_expectedContentLength = [totalBytesCount floatValue];
 		}
-        else if ([headers objectForKey:@"Content-Length"])
+        else if (headers[@"Content-Length"])
         {
             _data = [[NSMutableData alloc] init];
-			_expectedContentLength = [[headers objectForKey: @"Content-Length"] floatValue];
+			_expectedContentLength = [headers[@"Content-Length"] floatValue];
 		}
         else
         {

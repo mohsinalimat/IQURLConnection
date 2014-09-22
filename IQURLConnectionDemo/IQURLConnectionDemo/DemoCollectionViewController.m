@@ -39,7 +39,7 @@
 {
     AsyncImageViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([AsyncImageViewCell class]) forIndexPath:indexPath];
     
-    [cell.asyncImageView loadImage:[self.urls objectAtIndex:indexPath.row]];
+    [cell.asyncImageView loadImage:(self.urls)[indexPath.row]];
     
 //    cell.task = [[[SSFileUploadManager sharedManager] tasks] objectAtIndex:indexPath.row];
     

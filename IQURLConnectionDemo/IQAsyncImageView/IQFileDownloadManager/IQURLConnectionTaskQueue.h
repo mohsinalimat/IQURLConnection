@@ -1,5 +1,5 @@
 //
-// IQDownloadTask.h
+// IQURLConnectionTaskQueue.h
 // https://github.com/hackiftekhar/IQAsyncImageView
 // Copyright (c) 2013-14 Iftekhar Qurashi.
 //
@@ -22,35 +22,18 @@
 // THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
+#import "IQURLConnectionTask.h"
 
-typedef enum IQSDownloadTaskStatus
-{
-    IQDownloadTaskStatusNotStarted = 0,
-    IQDownloadTaskStatusPrepareDownloading,
-    IQDownloadTaskStatusDownloading,
-    IQDownloadTaskStatusPaused,
-    IQDownloadTaskStatusDownloaded,
-    IQDownloadTaskStatusFailed,
-}IQDownloadTaskStatus;
+@interface IQURLConnectionTaskQueue : NSObject
 
-extern NSString *const IQDownloadTaskDidFinishNotification;
++(IQURLConnectionTaskQueue*)sharedQueue;
 
-@interface IQDownloadTask : NSObject
+-(IQURLConnectionTask*)taskForURL:(NSURL*)url;
 
-@property(nonatomic, readonly) IQDownloadTaskStatus status;
-@property(nonatomic, copy) NSURL *fileURL;
-@property(nonatomic, assign) CGFloat progress;
+-(void)cancelTaskForURL:(NSURL*)url;
 
+-(void)removeTask:(IQURLConnectionTask*)task;
 
-- (void)addProgressTarget:(id)target action:(SEL)action;
-- (void)removeProgressTarget:(id)target action:(SEL)action;
-
-- (void)addCompletionTarget:(id)target action:(SEL)action;
-- (void)removeCompletionTarget:(id)target action:(SEL)action;
-
--(void)startDownload;
--(void)pauseDownload;
--(void)resumeDownload;
--(void)cancelDownload;
+-(NSArray*)tasks;
 
 @end

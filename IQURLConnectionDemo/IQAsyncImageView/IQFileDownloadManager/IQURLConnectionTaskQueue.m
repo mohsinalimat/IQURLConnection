@@ -1,5 +1,5 @@
 //
-// IQFileDownloadManager.m
+// IQURLConnectionTaskQueue.m
 // https://github.com/hackiftekhar/IQAsyncImageView
 // Copyright (c) 2013-14 Iftekhar Qurashi.
 //
@@ -21,11 +21,11 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "IQFileDownloadManager.h"
+#import "IQURLConnectionTaskQueue.h"
 
-@implementation IQFileDownloadManager
+@implementation IQURLConnectionTaskQueue
 {
-    NSMutableSet *downloadTasks;
+    NSMutableSet *urlConnectionTasks;
 }
 
 - (instancetype)init
@@ -33,20 +33,20 @@
     self = [super init];
     if (self)
     {
-        downloadTasks = [[NSMutableSet alloc] init];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(downloadTaskDidFinishNotification:) name:IQDownloadTaskDidFinishNotification object:nil];
+        urlConnectionTasks = [[NSMutableSet alloc] init];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(taskDidFinishNotification:) name:IQURLConnectionTaskDidFinishNotification object:nil];
     }
     return self;
 }
 
 -(NSArray*)tasks
 {
-    return [downloadTasks allObjects];
+    return [urlConnectionTasks allObjects];
 }
 
-+(IQFileDownloadManager*)sharedManager
++(IQURLConnectionTaskQueue*)sharedQueue
 {
-    static IQFileDownloadManager *manager;
+    static IQURLConnectionTaskQueue *manager;
     
     if (manager == nil)
     {
@@ -61,48 +61,48 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
--(IQDownloadTask*)downloadTaskForURL:(NSURL*)url
+-(IQURLConnectionTask*)taskForURL:(NSURL*)url
 {
-    IQDownloadTask *task = [self existingTaskForURL:url];
+    IQURLConnectionTask *task = [self existingTaskForURL:url];
     
     if (task == nil)
     {
-        task = [[IQDownloadTask alloc] init];
+        task = [[IQURLConnectionTask alloc] init];
         
-        [downloadTasks addObject:task];
+        [urlConnectionTasks addObject:task];
         
         task.fileURL = url;
-        [task startDownload];
+        [task start];
     }
     
     return task;
 }
 
--(void)cancelDownloadTaskForURL:(NSURL*)url
+-(void)cancelTaskForURL:(NSURL*)url
 {
-    IQDownloadTask *task = [self existingTaskForURL:url];
-    [task cancelDownload];
-    [downloadTasks removeObject:task];
+    IQURLConnectionTask *task = [self existingTaskForURL:url];
+    [task cancel];
+    [urlConnectionTasks removeObject:task];
 }
 
--(void)removeDownloadTask:(IQDownloadTask*)task
+-(void)removeTask:(IQURLConnectionTask*)task
 {
-    [task cancelDownload];
-    [downloadTasks removeObject:task];
+    [task cancel];
+    [urlConnectionTasks removeObject:task];
 }
 
--(IQDownloadTask*)existingTaskForURL:(NSURL*)url
+-(IQURLConnectionTask*)existingTaskForURL:(NSURL*)url
 {
-    for (IQDownloadTask *task in downloadTasks)
+    for (IQURLConnectionTask *task in urlConnectionTasks)
         if ([task.fileURL isEqual:url])
             return task;
     
     return nil;
 }
 
--(void)downloadTaskDidFinishNotification:(NSNotification*)notification
+-(void)taskDidFinishNotification:(NSNotification*)notification
 {
-    [downloadTasks removeObject:notification.object];
+    [urlConnectionTasks removeObject:notification.object];
 }
 
 @end

@@ -25,7 +25,7 @@
 #import "IQDataCache.h"
 #import "IQURLConnection.h"
 #import "UAProgressView.h"
-#import "IQFileDownloadManager.h"
+#import "IQURLConnectionTaskQueue.h"
 
 @interface IQAsyncButton ()
 
@@ -36,7 +36,7 @@
 
 @implementation IQAsyncButton
 {
-    IQDownloadTask *downloadTask;
+    IQURLConnectionTask *downloadTask;
 }
 
 -(void)loadImage:(NSString *)urlString
@@ -47,6 +47,7 @@
 -(void)loadImage:(NSString *)urlString completionHandler:(IQImageCompletionBlock)completion
 {
     _completion = completion;
+    [self setImage:nil forState:UIControlStateNormal];
     
     if (urlString == nil || [urlString isKindOfClass:[NSNull class]] || [NSURL URLWithString:urlString] == nil)
     {
@@ -55,30 +56,27 @@
     }
     else
     {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-
-            NSData *data = [[IQDataCache sharedCache] dataForURL:urlString];
+        NSData *data = [[IQDataCache sharedCache] dataForURL:urlString];
+        
+        if (data)
+        {
+            [self progress:1.0];
+            [self downloadingFinishWithData:data error:nil];
+        }
+        else
+        {
+            [self setImage:nil forState:UIControlStateNormal];
+            self.progressView.hidden = NO;
             
-            if (data)
-            {
-                [self progress:1.0];
-                [self downloadingFinishWithData:data error:nil];
-            }
-            else
-            {
-                [self setImage:nil forState:UIControlStateNormal];
-                self.progressView.hidden = NO;
-                
-                //Removing old callbacks
-                [self removeCallbacks];
-                
-                downloadTask = [[IQFileDownloadManager sharedManager] downloadTaskForURL:[NSURL URLWithString:urlString]];
-                [self.progressView setProgress:downloadTask.progress animated:NO];
-                
-                [downloadTask addProgressTarget:self action:@selector(progress:)];
-                [downloadTask addCompletionTarget:self action:@selector(downloadingFinishWithData:error:)];
-            }
-        });
+            //Removing old callbacks
+            [self removeCallbacks];
+            
+            downloadTask = [[IQURLConnectionTaskQueue sharedQueue] taskForURL:[NSURL URLWithString:urlString]];
+            [self.progressView setProgress:downloadTask.downloadProgress animated:NO];
+            
+            [downloadTask addTarget:self action:@selector(progress:) forTaskEvents:IQTaskEventDownloadProgress];
+            [downloadTask addTarget:self action:@selector(downloadingFinishWithData:error:) forTaskEvents:IQTaskEventFinish];
+        }
     }
 }
 
@@ -90,32 +88,27 @@
 
 -(void)downloadingFinishWithData:(NSData*)result error:(NSError*)error
 {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-
-        UIImage *image = [[UIImage alloc] initWithData:result];
-
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self setImage:image forState:UIControlStateNormal];
-            self.progressView.hidden = YES;
-            
-            //Animation
-            if (image)
-            {
-                CATransition *transition = [CATransition animation];
-                transition.duration = 0.3f;
-                transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-                transition.type = kCATransitionFade;
-                transition.removedOnCompletion = YES;
-                
-                [self.layer addAnimation:transition forKey:nil];
-            }
-            
-            if (self.completion)
-            {
-                self.completion(image, error);
-            }
-        });
-    });
+    UIImage *image = [[UIImage alloc] initWithData:result];
+    
+    [self setImage:image forState:UIControlStateNormal];
+    self.progressView.hidden = YES;
+    
+    //Animation
+    if (image)
+    {
+        CATransition *transition = [CATransition animation];
+        transition.duration = 0.1f;
+        transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        transition.type = kCATransitionFade;
+        transition.removedOnCompletion = YES;
+        
+        [self.layer addAnimation:transition forKey:nil];
+    }
+    
+    if (self.completion)
+    {
+        self.completion(image, error);
+    }
 }
 
 -(UAProgressView *)progressView
@@ -149,8 +142,9 @@
 -(void)removeCallbacks
 {
     self.completion = NULL;
-    [downloadTask removeProgressTarget:self action:@selector(progress:)];
-    [downloadTask removeCompletionTarget:self action:@selector(downloadingFinishWithData:error:)];
+
+    [downloadTask removeTarget:self action:@selector(progress:) forTaskEvents:IQTaskEventDownloadProgress];
+    [downloadTask removeTarget:self action:@selector(downloadingFinishWithData:error:) forTaskEvents:IQTaskEventFinish];
 }
 
 -(void)dealloc

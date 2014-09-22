@@ -35,25 +35,6 @@
     if ([segue.identifier isEqualToString:@"DifferentURL"])
     {
         DemoCollectionViewController *controller = segue.destinationViewController;
-//        controller.urls = @[  //Large Images
-//                            @"http://asia.olympus-imaging.com/products/dslr/e520/sample/images/sample_03.jpg",
-//                            @"http://asia.olympus-imaging.com/products/dslr/e510/sample/images/sample_01.jpg",
-//                            @"https://www.ricoh.com/r_dc/r/r8/img/sample_10.jpg",
-//                            @"http://asia.olympus-imaging.com/products/dslr/e510/sample/images/sample_05.jpg",
-//                            @"http://asia.olympus-imaging.com/products/dslr/e420/sample/images/sample_02.jpg",
-//                            @"http://www.olympus-imaging.co.in/products/dslr/lenses/25_28/images/sample02.jpg",
-//                            @"http://www.usa.canon.com/app/html/HDV/HR10/images/hr10_sample_image_02.jpg",
-//                            @"https://www.ricoh.com/r_dc/cx/cx3/img/sample_03.jpg",
-//                            @"http://www.olympus-imaging.co.in/products/compact/tough_series/tg810/images/tg810_sample02.jpg",
-//                            @"https://www.ricoh.com/r_dc/cx/cx1/img/sample_04.jpg",
-//                            @"http://www.olympus-imaging.co.in/products/dslr/lenses/90-250_28/images/sample02.jpg",
-//                            @"http://www.fujifilmusa.com/products/digital_cameras/x/fujifilm_x_s1/sample_images/img/index/ff_x_s1_002.JPG",
-//                            @"http://asia.olympus-imaging.com/products/dslr/epl1/sample/images/epl1_sample01.jpg",
-//                            @"http://www.jail.se/hardware/digital_camera/canon/ixus_800is-powershot_sd700/images/sample_photos/sample1.jpg",
-//                            @"http://www.ricoh-imaging.co.jp/english/r_dc/caplio/r7/img/sample_04.jpg",
-//                            @"http://www.popphoto.com/files/_images/201306/k50sample1.jpg"
-//                            ];
-        
         controller.urls = @[    //Medium Images
                             @"http://isc.stuorg.iastate.edu/wp-content/uploads/sample.jpg",
                             @"http://res.cloudinary.com/demo/image/upload/sample.jpg",
@@ -77,21 +58,26 @@
     else if ([segue.identifier isEqualToString:@"SameURL"])
     {
         DemoCollectionViewController *controller = segue.destinationViewController;
-        controller.urls = @[@"https://www.ricoh.com/r_dc/gx/gx200/img/sample_05.jpg",
-                            @"http://asia.olympus-imaging.com/products/dslr/ep2/sample/images/ep2_sample_01.jpg",
-                            @"http://www.sony.net/Products/di/common/images/products/4axb/actualphotos/photo_sample3.jpg",
-                            @"http://imgsv.imaging.nikon.com/lineup/dslr/d600/img/sample01/img_05_l.jpg",
-                            @"https://www.ricoh.com/r_dc/gx/gx200/img/sample_05.jpg",
-                            @"http://asia.olympus-imaging.com/products/dslr/ep2/sample/images/ep2_sample_01.jpg",
-                            @"http://www.sony.net/Products/di/common/images/products/4axb/actualphotos/photo_sample3.jpg",
-                            @"http://imgsv.imaging.nikon.com/lineup/dslr/d600/img/sample01/img_05_l.jpg",
-                            @"https://www.ricoh.com/r_dc/gx/gx200/img/sample_05.jpg",
-                            @"http://asia.olympus-imaging.com/products/dslr/ep2/sample/images/ep2_sample_01.jpg",
-                            @"http://www.sony.net/Products/di/common/images/products/4axb/actualphotos/photo_sample3.jpg",
-                            @"http://imgsv.imaging.nikon.com/lineup/dslr/d600/img/sample01/img_05_l.jpg",
-                            @"https://www.ricoh.com/r_dc/gx/gx200/img/sample_05.jpg",
-                            @"http://asia.olympus-imaging.com/products/dslr/ep2/sample/images/ep2_sample_01.jpg",
-                            @"http://www.cameraegg.org/wp-content/uploads/2013/02/Nikon-D7100-Sample-Image-4.jpg",
+        controller.urls = @[@"http://www.screensavergift.com/wp-content/uploads/BeautifulNature3-610x320.jpg",
+                            @"http://3.bp.blogspot.com/-wsg2e3JHlmM/Tph8wx7ISdI/AAAAAAAABCk/9jhaYGA5-wk/s640/Beautiful+Peacock+hd+wallpapers+free+download+-5.jpg",
+                            @"http://media-cdn.tripadvisor.com/media/photo-s/02/67/a1/0f/beautiful-turtles.jpg",
+                            @"http://1.bp.blogspot.com/-PUanEkDK4Bo/T3APVapVF2I/AAAAAAAACrU/SGbXGdbeLFw/s640/beautiful-birds-2.jpg",
+                            @"http://www.screensavergift.com/wp-content/uploads/BeautifulNature3-610x320.jpg",
+                            @"http://3.bp.blogspot.com/-wsg2e3JHlmM/Tph8wx7ISdI/AAAAAAAABCk/9jhaYGA5-wk/s640/Beautiful+Peacock+hd+wallpapers+free+download+-5.jpg",
+                            @"http://media-cdn.tripadvisor.com/media/photo-s/02/67/a1/0f/beautiful-turtles.jpg",
+                            @"http://1.bp.blogspot.com/-PUanEkDK4Bo/T3APVapVF2I/AAAAAAAACrU/SGbXGdbeLFw/s640/beautiful-birds-2.jpg",
+                            @"http://www.screensavergift.com/wp-content/uploads/BeautifulNature3-610x320.jpg",
+                            @"http://3.bp.blogspot.com/-wsg2e3JHlmM/Tph8wx7ISdI/AAAAAAAABCk/9jhaYGA5-wk/s640/Beautiful+Peacock+hd+wallpapers+free+download+-5.jpg",
+                            @"http://media-cdn.tripadvisor.com/media/photo-s/02/67/a1/0f/beautiful-turtles.jpg",
+                            @"http://1.bp.blogspot.com/-PUanEkDK4Bo/T3APVapVF2I/AAAAAAAACrU/SGbXGdbeLFw/s640/beautiful-birds-2.jpg",
+                            @"http://www.screensavergift.com/wp-content/uploads/BeautifulNature3-610x320.jpg",
+                            @"http://3.bp.blogspot.com/-wsg2e3JHlmM/Tph8wx7ISdI/AAAAAAAABCk/9jhaYGA5-wk/s640/Beautiful+Peacock+hd+wallpapers+free+download+-5.jpg",
+                            @"http://media-cdn.tripadvisor.com/media/photo-s/02/67/a1/0f/beautiful-turtles.jpg",
+                            @"http://1.bp.blogspot.com/-PUanEkDK4Bo/T3APVapVF2I/AAAAAAAACrU/SGbXGdbeLFw/s640/beautiful-birds-2.jpg",
+                            @"http://www.screensavergift.com/wp-content/uploads/BeautifulNature3-610x320.jpg",
+                            @"http://3.bp.blogspot.com/-wsg2e3JHlmM/Tph8wx7ISdI/AAAAAAAABCk/9jhaYGA5-wk/s640/Beautiful+Peacock+hd+wallpapers+free+download+-5.jpg",
+                            @"http://media-cdn.tripadvisor.com/media/photo-s/02/67/a1/0f/beautiful-turtles.jpg",
+                            @"http://1.bp.blogspot.com/-PUanEkDK4Bo/T3APVapVF2I/AAAAAAAACrU/SGbXGdbeLFw/s640/beautiful-birds-2.jpg",
                             ];
     }
 }

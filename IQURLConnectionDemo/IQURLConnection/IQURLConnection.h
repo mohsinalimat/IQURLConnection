@@ -40,6 +40,7 @@ typedef void (^IQProgressBlock)(CGFloat progress);
 @property(nonatomic, strong) IQProgressBlock         downloadProgressBlock;
 @property(nonatomic, strong) IQResponseBlock         responseBlock;
 
+@property(nonatomic, strong, readonly) NSCachedURLResponse *cachedURLResponse;
 
 //It automatically fires `start` method.
 + (instancetype)sendAsynchronousRequest:(NSURLRequest *)request responseBlock:(IQResponseBlock)responseBlock uploadProgressBlock:(IQProgressBlock)uploadProgress downloadProgressBlock:(IQProgressBlock)downloadProgress completionHandler:(IQDataCompletionBlock)completion;

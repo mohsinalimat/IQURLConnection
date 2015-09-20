@@ -69,6 +69,11 @@ static NSOperationQueue *queue;
     return self;
 }
 
+-(NSCachedURLResponse *)cachedURLResponse
+{
+    return [[NSURLCache sharedURLCache] cachedResponseForRequest:self.originalRequest];
+}
+
 -(NSData *)responseData
 {
     return _data;

@@ -30,7 +30,7 @@
 @interface IQAsyncButton ()
 
 @property(nonatomic, strong) UAProgressView *progressView;
-@property(nonatomic, strong) IQImageCompletionBlock completion;
+@property(nonatomic, strong) IQAsyncButtonImageCompletionBlock completion;
 
 @end
 
@@ -44,7 +44,7 @@
     [self loadImage:urlString completionHandler:NULL];
 }
 
--(void)loadImage:(NSString *)urlString completionHandler:(IQImageCompletionBlock)completion
+-(void)loadImage:(NSString *)urlString completionHandler:(IQAsyncButtonImageCompletionBlock)completion
 {
     _completion = completion;
     [self setImage:nil forState:UIControlStateNormal];
@@ -52,7 +52,7 @@
     if (urlString == nil || [urlString isKindOfClass:[NSNull class]] || [NSURL URLWithString:urlString] == nil)
     {
         [self progress:1.0];
-        [self downloadingFinishWithData:nil error:[NSError errorWithDomain:NSStringFromClass([self class]) code:kIQInvalidURLErrorCode userInfo:nil]];
+        [self downloadingFinishWithData:nil error:[NSError errorWithDomain:NSStringFromClass([self class]) code:NSURLErrorBadURL userInfo:nil]];
     }
     else
     {

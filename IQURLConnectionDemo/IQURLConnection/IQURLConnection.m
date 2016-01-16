@@ -26,8 +26,6 @@
 
 @interface IQURLConnection ()
 {
-    IQDataCompletionBlock   _dataCompletionBlock;
-    
     NSMutableData *_data;
 }
 
@@ -46,25 +44,45 @@ static NSOperationQueue *queue;
     queue = [[NSOperationQueue alloc] init];
 }
 
-+ (IQURLConnection*)sendAsynchronousRequest:(NSURLRequest *)request responseBlock:(IQResponseBlock)responseBlock uploadProgressBlock:(IQProgressBlock)uploadProgress downloadProgressBlock:(IQProgressBlock)downloadProgress completionHandler:(IQDataCompletionBlock)completion
++ (IQURLConnection*)sendAsynchronousRequest:(NSMutableURLRequest *)request
+                              responseBlock:(IQURLConnectionResponseBlock)responseBlock
+                        uploadProgressBlock:(IQURLConnectionProgressBlock)uploadProgress
+                      downloadProgressBlock:(IQURLConnectionProgressBlock)downloadProgress
+                          completionHandler:(IQURLConnectionDataCompletionBlock)completion
 {
-    IQURLConnection *asyncRequest = [[IQURLConnection alloc] initWithRequest:request responseBlock:&responseBlock uploadProgressBlock:&uploadProgress downloadProgressBlock:&downloadProgress completionBlock:&completion];
+    IQURLConnection *asyncRequest = [[IQURLConnection alloc] initWithRequest:request
+                                                                  resumeData:nil
+                                                               responseBlock:responseBlock
+                                                         uploadProgressBlock:uploadProgress
+                                                       downloadProgressBlock:downloadProgress
+                                                             completionBlock:completion];
     [asyncRequest start];
     
     return asyncRequest;
 }
 
--(instancetype)initWithRequest:(NSURLRequest *)request responseBlock:(IQResponseBlock*)responseBlock uploadProgressBlock:(IQProgressBlock*)uploadProgress downloadProgressBlock:(IQProgressBlock*)downloadProgress completionBlock:(IQDataCompletionBlock*)completion
+- (instancetype)initWithRequest:(NSMutableURLRequest *)request
+                     resumeData:(NSData*)dataToResume
+                  responseBlock:(IQURLConnectionResponseBlock)responseBlock
+            uploadProgressBlock:(IQURLConnectionProgressBlock)uploadProgress
+          downloadProgressBlock:(IQURLConnectionProgressBlock)downloadProgress
+                completionBlock:(IQURLConnectionDataCompletionBlock)completion
 {
+    if ([dataToResume length])
+    {
+        [request addValue:[NSString stringWithFormat: @"bytes=%lu-",(unsigned long)[dataToResume length]] forHTTPHeaderField:@"Range"];
+    }
+    
     if (self = [super initWithRequest:request delegate:self startImmediately:NO])
     {
         [self setDelegateQueue:queue];
-        _uploadProgressBlock = *uploadProgress;
-        _downloadProgressBlock = *downloadProgress;
-        _dataCompletionBlock = *completion;
-        _responseBlock = *responseBlock;
+        _uploadProgressBlock = uploadProgress;
+        _downloadProgressBlock = downloadProgress;
+        _dataCompletionBlock = completion;
+        _responseBlock = responseBlock;
         
-        _data = [[NSMutableData alloc] init];
+        _data = [[NSMutableData alloc] initWithData:dataToResume];
+        _expectedContentLength = NSURLResponseUnknownLength;
     }
     return self;
 }
@@ -74,6 +92,20 @@ static NSOperationQueue *queue;
     return [[NSURLCache sharedURLCache] cachedResponseForRequest:self.originalRequest];
 }
 
+-(NSDictionary *)cachedDictionaryResponse
+{
+    NSData *data = [[self cachedURLResponse] data];
+    
+    if (data)
+    {
+        return [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    }
+    else
+    {
+        return nil;
+    }
+}
+
 -(NSData *)responseData
 {
     return _data;
@@ -81,7 +113,7 @@ static NSOperationQueue *queue;
 
 -(void)sendDownloadProgress:(CGFloat)progress
 {
-    if (_downloadProgressBlock && _response.expectedContentLength!=NSURLResponseUnknownLength)
+    if (_downloadProgressBlock && _expectedContentLength!=NSURLResponseUnknownLength)
     {
         if ([NSThread isMainThread])
         {
@@ -153,14 +185,44 @@ static NSOperationQueue *queue;
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSHTTPURLResponse *)response
 {
     _response = response;
+    
+    NSDictionary *headers = [response allHeaderFields];
+    if (headers)
+    {
+        if (headers[@"Content-Range"])
+        {
+            NSString *contentRange = headers[@"Content-Range"];
+            NSRange range = [contentRange rangeOfString: @"/"];
+            NSString *totalBytesCount = [contentRange substringFromIndex: range.location + 1];
+            _expectedContentLength = [totalBytesCount floatValue];
+        }
+        else if (headers[@"Content-Length"])
+        {
+            _data = [[NSMutableData alloc] init];
+            _expectedContentLength = [headers[@"Content-Length"] floatValue];
+        }
+        else
+        {
+            _data = [[NSMutableData alloc] init];
+            _expectedContentLength = NSURLResponseUnknownLength;
+        }
+    }
+    
+    if (_expectedContentLength == 0)
+    {
+        _expectedContentLength = NSURLResponseUnknownLength;
+    }
+    
     [self sendResponse:_response];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
     [_data appendData:data];
-    
-    [self sendDownloadProgress:((CGFloat)_data.length/(CGFloat)_response.expectedContentLength)];
+
+    _totalBytesReceived = [_data length];
+
+    [self sendDownloadProgress:((CGFloat)_totalBytesReceived/_expectedContentLength)];
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
@@ -170,11 +232,18 @@ static NSOperationQueue *queue;
     [self sendCompletionData:_data error:error];
 }
 
+-(void)start
+{
+    [super start];
+}
+
 -(void)cancel
 {
     [super cancel];
     
-    //    [self sendCompletionData:nil error:[NSError errorWithDomain:@"UserCancelDomain" code:100 userInfo:nil]];
+    _error = [NSError errorWithDomain:NSStringFromClass([self class]) code:NSURLErrorCancelled userInfo:nil];
+    
+    [self sendCompletionData:_data error:_error];
     
     _responseBlock = NULL;
     _uploadProgressBlock = NULL;
@@ -187,18 +256,11 @@ static NSOperationQueue *queue;
     [self sendCompletionData:_data error:nil];
 }
 
-- (void)connectionDidResumeDownloading:(NSURLConnection *)connection totalBytesWritten:(long long)totalBytesWritten expectedTotalBytes:(long long) expectedTotalBytes
-{
-    NSLog(@"Resuming");
-}
-
-- (void)connection:(NSURLConnection *)connection didWriteData:(long long)bytesWritten totalBytesWritten:(long long)totalBytesWritten expectedTotalBytes:(long long) expectedTotalBytes
-{
-    [self sendDownloadProgress:((CGFloat)_data.length/(CGFloat)_response.expectedContentLength)];
-}
-
 - (void)connection:(NSURLConnection *)connection didSendBodyData:(NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite
 {
+    _totalBytesWritten = totalBytesWritten;
+    _totalBytesExpectedToWrite = totalBytesExpectedToWrite;
+
     [self sendUploadProgress:((CGFloat)totalBytesWritten/(CGFloat)totalBytesExpectedToWrite)];
 }
 

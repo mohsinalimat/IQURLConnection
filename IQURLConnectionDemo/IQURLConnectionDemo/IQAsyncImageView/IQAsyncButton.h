@@ -24,6 +24,8 @@
 #import <UIKit/UIKit.h>
 #import "IQURLConnection.h"
 
+typedef void (^IQAsyncButtonImageCompletionBlock)(UIImage * image, NSError *error);
+
 @interface IQAsyncButton : UIButton
 
 @property(nonatomic, readonly) CGFloat progress;
@@ -31,6 +33,6 @@
 -(void)removeCallbacks;
 
 -(void)loadImage:(NSString *)urlString;
--(void)loadImage:(NSString *)urlString completionHandler:(IQImageCompletionBlock)completion;
+-(void)loadImage:(NSString *)urlString completionHandler:(IQAsyncButtonImageCompletionBlock)completion;
 
 @end

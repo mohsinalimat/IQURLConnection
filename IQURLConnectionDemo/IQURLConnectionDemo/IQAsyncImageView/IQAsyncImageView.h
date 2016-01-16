@@ -25,6 +25,8 @@
 #import <UIKit/UIKit.h>
 #import "IQURLConnection.h"
 
+typedef void (^IQAsyncImageCompletionBlock)(UIImage * image, NSError *error);
+
 @interface IQAsyncImageView : UIImageView
 
 @property(nonatomic, readonly) CGFloat progress;
@@ -32,6 +34,6 @@
 -(void)removeCallbacks;
 
 -(void)loadImage:(NSString *)urlString;
--(void)loadImage:(NSString *)urlString completionHandler:(IQImageCompletionBlock)completion;
+-(void)loadImage:(NSString *)urlString completionHandler:(IQAsyncImageCompletionBlock)completion;
 
 @end

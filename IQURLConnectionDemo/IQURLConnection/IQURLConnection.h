@@ -1,7 +1,7 @@
 //
 //  IQURLConnection.h
 // https://github.com/hackiftekhar/IQURLConnection
-// Copyright (c) 2013-14 Iftekhar Qurashi.
+// Copyright (c) 2013-16 Iftekhar Qurashi.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -21,34 +21,142 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-/*! @abstract Downloadeded NSData will return through IQDataCompletionBlock */
-typedef void (^IQDataCompletionBlock)(NSData * result, NSError *error);
-typedef void (^IQResponseBlock)(NSHTTPURLResponse* response);
-typedef void (^IQProgressBlock)(CGFloat progress);
+/**
+ `IQURLConnectionDataCompletionBlock`
+ Used for sending callback when request is completed or failed.
+ 
+ `IQURLConnectionResponseBlock`
+ Used for sending response callback.
+ 
+ `IQURLConnectionProgressBlock`
+ Used for sending data upload/download callbacks.
+ */
+typedef void (^IQURLConnectionDataCompletionBlock)(NSData* _Nullable result, NSError* _Nullable error);
+typedef void (^IQURLConnectionResponseBlock)(NSHTTPURLResponse* _Nullable response);
+typedef void (^IQURLConnectionProgressBlock)(CGFloat progress);
 
 #import <Foundation/NSURLConnection.h>
 
 @interface IQURLConnection : NSURLConnection
 
-@property(nonatomic, strong, readonly) NSHTTPURLResponse *response;
-@property(nonatomic, assign, readonly) CGFloat downloadProgress;
+///--------------------------
+/// @name Initialization
+///--------------------------
+
+/**
+ Send an asynchronous request, you can optionally register for response, upload, download and completionHandlers. This method automatically triggers `start` method.
+ */
++ (nonnull instancetype)sendAsynchronousRequest:(nonnull NSMutableURLRequest *)request
+                                  responseBlock:(nullable IQURLConnectionResponseBlock)responseBlock
+                            uploadProgressBlock:(nullable IQURLConnectionProgressBlock)uploadProgress
+                          downloadProgressBlock:(nullable IQURLConnectionProgressBlock)downloadProgress
+                              completionHandler:(nullable IQURLConnectionDataCompletionBlock)completion;
+
+/**
+ Initialize an asynchronous request, you can optionally register for response, upload, download and completionHandlers. This method doesn't automatically triggers `start` method, `start` method should be triggered manually according to need.
+ */
+- (nonnull instancetype)initWithRequest:(nonnull NSMutableURLRequest *)request
+                             resumeData:(nullable NSData*)dataToResume
+                          responseBlock:(nullable IQURLConnectionResponseBlock)responseBlock
+                    uploadProgressBlock:(nullable IQURLConnectionProgressBlock)uploadProgress
+                  downloadProgressBlock:(nullable IQURLConnectionProgressBlock)downloadProgress
+                        completionBlock:(nullable IQURLConnectionDataCompletionBlock)completion;
+
+////Functions of NSURLConnection start and cancel
+- (void)start;
+- (void)cancel;
+
+
+
+///--------------------------
+/// @name Request
+///--------------------------
+
+/**
+ Upload progress of request.
+ */
 @property(nonatomic, assign, readonly) CGFloat uploadProgress;
-@property(nonatomic, strong, readonly) NSData *responseData;
-@property(nonatomic, strong, readonly) NSError *error;
 
-@property(nonatomic, strong) IQProgressBlock         uploadProgressBlock;
-@property(nonatomic, strong) IQProgressBlock         downloadProgressBlock;
-@property(nonatomic, strong) IQResponseBlock         responseBlock;
+/**
+ Upload progress callback block.
+ */
+@property(nullable, nonatomic, strong) IQURLConnectionProgressBlock uploadProgressBlock;
 
-@property(nonatomic, strong, readonly) NSCachedURLResponse *cachedURLResponse;
+/**
+ totalBytesWritten of upload request.
+ */
+@property(nonatomic, assign, readonly) NSInteger totalBytesWritten;
 
-//It automatically fires `start` method.
-+ (instancetype)sendAsynchronousRequest:(NSURLRequest *)request responseBlock:(IQResponseBlock)responseBlock uploadProgressBlock:(IQProgressBlock)uploadProgress downloadProgressBlock:(IQProgressBlock)downloadProgress completionHandler:(IQDataCompletionBlock)completion;
+/**
+ totalBytesExpectedToWrite of upload request.
+ */
+@property(nonatomic, assign, readonly) NSInteger totalBytesExpectedToWrite;
 
-- (instancetype)initWithRequest:(NSURLRequest *)request responseBlock:(IQResponseBlock*)responseBlock uploadProgressBlock:(IQProgressBlock*)uploadProgress downloadProgressBlock:(IQProgressBlock*)downloadProgress completionBlock:(IQDataCompletionBlock*)completion;
 
-////Functions of IQURLConnection start and cancel
-//- (void)start;
-//- (void)cancel;
+
+///--------------------------
+/// @name Response
+///--------------------------
+
+/**
+ HTTP Response by the request. It will be nil before getting a response.
+ */
+@property(nullable, nonatomic, strong, readonly) NSHTTPURLResponse *response;
+
+/**
+ Response callback block.
+ */
+@property(nullable, nonatomic, strong) IQURLConnectionResponseBlock responseBlock;
+
+/**
+ Download progress of request.
+ */
+@property(nonatomic, assign, readonly) CGFloat downloadProgress;
+
+/**
+ Download progress callback block.
+ */
+@property(nullable, nonatomic, strong) IQURLConnectionProgressBlock downloadProgressBlock;
+
+/**
+ totalBytesReceived of download request.
+ */
+@property(nonatomic, assign, readonly) NSInteger totalBytesReceived;
+
+/**
+ Expected content length of response data.
+ */
+@property(nonatomic, assign, readonly) NSInteger expectedContentLength;
+
+
+
+///--------------------------
+/// @name Response Completion
+///--------------------------
+
+/**
+ Response data of request.
+ */
+@property(nullable, nonatomic, strong, readonly) NSData *responseData;
+
+/**
+ Error object of request.
+ */
+@property(nullable, nonatomic, strong, readonly) NSError *error;
+
+/**
+ Download progress callback block.
+ */
+@property(nullable, nonatomic, strong) IQURLConnectionDataCompletionBlock dataCompletionBlock;
+
+
+///--------------------------
+/// @name Cache
+///--------------------------
+
+/**
+ Previoiusly Cached response of the request.
+ */
+@property(nullable, nonatomic, strong, readonly) NSCachedURLResponse *cachedURLResponse;
 
 @end

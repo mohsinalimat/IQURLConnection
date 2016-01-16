@@ -84,7 +84,7 @@ NSString *const IQURLConnectionTaskDidFinishNotification      =   @"IQURLConnect
         
     } completionBlock:^(NSData *result, NSError *error) {
         
-        if ([error code] == kIQUserCancelErrorCode)
+        if ([error code] == NSURLErrorCancelled)
         {
             _status = IQURLConnectionTaskStatusPaused;
             _dataToResume = result;

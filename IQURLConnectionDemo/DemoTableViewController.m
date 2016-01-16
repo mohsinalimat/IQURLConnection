@@ -36,7 +36,6 @@
     {
         DemoCollectionViewController *controller = segue.destinationViewController;
         controller.urls = @[    //Medium Images
-                            @"http://isc.stuorg.iastate.edu/wp-content/uploads/sample.jpg",
                             @"http://res.cloudinary.com/demo/image/upload/sample.jpg",
                             @"http://upload.wikimedia.org/wikipedia/commons/1/16/HDRI_Sample_Scene_Balls_(JPEG-HDR).jpg",
                             @"http://imgsv.imaging.nikon.com/lineup/lens/zoom/normalzoom/af-s_24-85mmf_35-45g_ed_vr/img/sample/sample2_l.jpg",

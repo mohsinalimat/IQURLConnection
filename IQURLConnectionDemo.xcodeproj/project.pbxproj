@@ -12,10 +12,6 @@
 		4CBEC5601BAE89C000117F83 /* IQDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBEC5511BAE89C000117F83 /* IQDataCache.m */; };
 		4CBEC5611BAE89C000117F83 /* IQURLConnectionTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBEC5541BAE89C000117F83 /* IQURLConnectionTask.m */; };
 		4CBEC5621BAE89C000117F83 /* IQURLConnectionTaskQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBEC5561BAE89C000117F83 /* IQURLConnectionTaskQueue.m */; };
-		4CBEC5631BAE89C000117F83 /* paused.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CBEC5571BAE89C000117F83 /* paused.png */; };
-		4CBEC5641BAE89C000117F83 /* paused@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CBEC5581BAE89C000117F83 /* paused@2x.png */; };
-		4CBEC5651BAE89C000117F83 /* stop.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CBEC5591BAE89C000117F83 /* stop.png */; };
-		4CBEC5661BAE89C000117F83 /* stop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CBEC55A1BAE89C000117F83 /* stop@2x.png */; };
 		4CBEC5671BAE89C000117F83 /* UAProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBEC55D1BAE89C000117F83 /* UAProgressView.m */; };
 		4CBEC56B1BAE89CB00117F83 /* IQURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CBEC56A1BAE89CB00117F83 /* IQURLConnection.m */; };
 		9D8A6147189F9B4400BFC18A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D8A6146189F9B4400BFC18A /* Foundation.framework */; };
@@ -58,10 +54,6 @@
 		4CBEC5541BAE89C000117F83 /* IQURLConnectionTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQURLConnectionTask.m; sourceTree = "<group>"; };
 		4CBEC5551BAE89C000117F83 /* IQURLConnectionTaskQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQURLConnectionTaskQueue.h; sourceTree = "<group>"; };
 		4CBEC5561BAE89C000117F83 /* IQURLConnectionTaskQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQURLConnectionTaskQueue.m; sourceTree = "<group>"; };
-		4CBEC5571BAE89C000117F83 /* paused.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = paused.png; sourceTree = "<group>"; };
-		4CBEC5581BAE89C000117F83 /* paused@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "paused@2x.png"; sourceTree = "<group>"; };
-		4CBEC5591BAE89C000117F83 /* stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stop.png; sourceTree = "<group>"; };
-		4CBEC55A1BAE89C000117F83 /* stop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stop@2x.png"; sourceTree = "<group>"; };
 		4CBEC55C1BAE89C000117F83 /* UAProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UAProgressView.h; sourceTree = "<group>"; };
 		4CBEC55D1BAE89C000117F83 /* UAProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UAProgressView.m; sourceTree = "<group>"; };
 		4CBEC5691BAE89CB00117F83 /* IQURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQURLConnection.h; sourceTree = "<group>"; };
@@ -126,10 +118,6 @@
 				4CBEC54E1BAE89C000117F83 /* IQAsyncImageView.m */,
 				4CBEC54F1BAE89C000117F83 /* IQDataCache */,
 				4CBEC5521BAE89C000117F83 /* IQFileDownloadManager */,
-				4CBEC5571BAE89C000117F83 /* paused.png */,
-				4CBEC5581BAE89C000117F83 /* paused@2x.png */,
-				4CBEC5591BAE89C000117F83 /* stop.png */,
-				4CBEC55A1BAE89C000117F83 /* stop@2x.png */,
 				4CBEC55B1BAE89C000117F83 /* UAProgressView */,
 			);
 			name = IQAsyncImageView;
@@ -298,7 +286,7 @@
 		9D8A613B189F9B4400BFC18A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = Iftekhar;
 				TargetAttributes = {
 					9D8A6163189F9B4400BFC18A = {
@@ -333,10 +321,6 @@
 				9D8A6184189F9B7200BFC18A /* Main.storyboard in Resources */,
 				9D8A615F189F9B4400BFC18A /* Images.xcassets in Resources */,
 				9D8A6151189F9B4400BFC18A /* InfoPlist.strings in Resources */,
-				4CBEC5631BAE89C000117F83 /* paused.png in Resources */,
-				4CBEC5641BAE89C000117F83 /* paused@2x.png in Resources */,
-				4CBEC5651BAE89C000117F83 /* stop.png in Resources */,
-				4CBEC5661BAE89C000117F83 /* stop@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,7 +471,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IQURLConnectionDemo/IQURLConnectionDemo-Prefix.pch";
 				INFOPLIST_FILE = "IQURLConnectionDemo/IQURLConnectionDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.iftekhar.IQURLConnection;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -502,7 +486,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IQURLConnectionDemo/IQURLConnectionDemo-Prefix.pch";
 				INFOPLIST_FILE = "IQURLConnectionDemo/IQURLConnectionDemo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.iftekhar.IQURLConnection;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -525,6 +509,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "IQURLConnectionDemoTests/IQURLConnectionDemoTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.iftekhar.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -543,6 +528,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IQURLConnectionDemo/IQURLConnectionDemo-Prefix.pch";
 				INFOPLIST_FILE = "IQURLConnectionDemoTests/IQURLConnectionDemoTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.iftekhar.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;

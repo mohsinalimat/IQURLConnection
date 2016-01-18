@@ -21,6 +21,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+#import <Foundation/NSURLConnection.h>
+#import <CoreGraphics/CGBase.h>
+
 /**
  `IQURLConnectionDataCompletionBlock`
  Used for sending callback when request is completed or failed.
@@ -34,8 +37,6 @@
 typedef void (^IQURLConnectionDataCompletionBlock)(NSData* _Nullable result, NSError* _Nullable error);
 typedef void (^IQURLConnectionResponseBlock)(NSHTTPURLResponse* _Nullable response);
 typedef void (^IQURLConnectionProgressBlock)(CGFloat progress);
-
-#import <Foundation/NSURLConnection.h>
 
 @interface IQURLConnection : NSURLConnection
 
